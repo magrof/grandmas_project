@@ -1,16 +1,17 @@
 # my_application
 
-A new Flutter project.
+PLANT DISEASE APP PROJECT FOR MY GRANDMA Original ba 2 xx. GUF will approve it.
 
 ## Getting Started
+This is my very first Flutter application. I asked my grandma what to choose as a first app.
+She asked me for a plant disease app.
+I'm studying Dart language by practice (creating mobile apps) for my portfolio.
+Gemini helps me to study faster.
 
-This project is a starting point for a Flutter application.
+Warning: this is NOT a 100% project written by AI.
 
-A few resources to get you started if this is your first Flutter project:
+If you wanna connect w/ me please click on the LinkedIn button
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+https://www.linkedin.com/in/tamerlan-sandykbaev-288932212/
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+All rights reserved!
