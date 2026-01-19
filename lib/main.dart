@@ -10,7 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   try {
-    camers = await availableCameras();
+    cameras = await availableCameras();
   } catch (e) {
     debugPrint("Ошибка камер: $e");
   }
