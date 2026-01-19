@@ -43,11 +43,14 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Map<String, dynamic>> _plants = [];
   final TextEditingController _controller = TextEditingController();
 
+  String _searchQuery = '';
+
   @override
   void initState() {
     super.initState();
     _initDb(); // Открываем БД сразу при запуске
   }
+
 
   // DB LOGIC (SQL)
   Future<void> _initDb() async {
@@ -68,7 +71,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Read from DB
   Future<void> _refreshPlants() async {
-    final data = await _database!.query('plants', orderBy: 'id DESC');
+    List<Map<String, dynamic>> data;
+    if (_searchQuery.isEmpty) {
+      data = await _database!.query('plants', orderBy: 'id DESC');
+    } else{
+      data = await _database!.query(
+          'plants',
+          where: 'name LIKE ?',
+          whereArgs: ['%$_searchQuery%'],
+          orderBy: 'id DESC',
+    );
+    }
     setState(() {
       _plants = data;
     });
@@ -93,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           // Text field
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             child: Row(
               children: [
                 Expanded(
@@ -113,6 +126,21 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+          Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: TextField(
+                onChanged: (value){
+                  _searchQuery = value;
+                  _refreshPlants();
+                },
+                decoration: const InputDecoration(
+                  hintText: 'Найти в моём саду...',
+                  prefixIcon: Icon(Icons.search),
+                  contentPadding: EdgeInsets.symmetric(vertical: 0)
+                ),
+              ),
+          ),
+          const Divider(),
           // List from DB
           Expanded(
             child: _plants.isEmpty
